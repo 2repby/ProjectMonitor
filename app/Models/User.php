@@ -41,4 +41,22 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function areas()
+    {
+        return $this->belongsToMany(Area::class,'area_users');
+    }
+
+    public function add_area($id)
+    {
+        $this->areas()->attach($id);
+        return $this->areas()->get();
+    }
+
+    public function delete_area($id)
+    {
+        $this->areas()->detach($id);
+        return $this->areas()->get();
+    }
+
 }
