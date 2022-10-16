@@ -35,7 +35,12 @@ Route::get('/users/{id_user}/deletearea/{id_area}', [UserController::class,'dele
 
 
 // temp routes удалить
-Route::get('/getuserbymetric/{id}', [MetricController::class,'get_user_by_metric']);
+Route::get('/test', function (){
+    $a = 1;
+    $b = 2;
+    $c = 0;
+    return $c += ($a += (int)(14.5)/5) + ($b -= 5 % 3);
+});
 
 
 //Protected routes
