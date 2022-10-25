@@ -107,5 +107,9 @@ class MetricController extends Controller
         return $metricService->get_user_by_metric($id);
 
     }
+    public function get_project($id){
+        return response(Metric::class->find($id)->project());
+    }
+
 
 }

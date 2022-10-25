@@ -26,6 +26,8 @@ Route::get('/metrics', [MetricController::class, 'index']);
 Route::get('/projects/{id}', [ProjectController::class,'show']);
 Route::get('/metrics/{id}', [MetricController::class,'show']);
 Route::get('/projects/search/{name}', [ProjectController::class,'search']);
+Route::get('/projectswith/metrics/', [ProjectController::class,'withmetrics']);
+Route::get('/projectswith/metrics/{id}', [ProjectController::class,'withmetrics']);
 Route::post('/register', [AuthController::class,'register']);
 Route::post('/login', [AuthController::class,'login']);
 Route::get('/areas/{id}/users', [AreaController::class,'users_by_area']);
@@ -36,10 +38,7 @@ Route::get('/users/{id_user}/deletearea/{id_area}', [UserController::class,'dele
 
 // temp routes удалить
 Route::get('/test', function (){
-    $a = 1;
-    $b = 2;
-    $c = 0;
-    return $c += ($a += (int)(14.5)/5) + ($b -= 5 % 3);
+    return(phpinfo());
 });
 
 

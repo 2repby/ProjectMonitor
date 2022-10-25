@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Period;
 use Illuminate\Http\Request;
 use App\Models\Project;
 use Illuminate\Support\Facades\Gate;
@@ -91,5 +92,20 @@ class ProjectController extends Controller
     public function search($name)
     {
         return response(Project::where('name', 'like', '%'.$name.'%')->get());
+    }
+    /**
+     * Return all projects with metrics.
+     *
+     * @param
+     * @return \Illuminate\Http\Response
+     */
+    public function withmetrics($id=null)
+    {
+        if (is_null($id))
+            return response(Project::with('metrics')->get());
+        else
+        {
+            return response(Project::with('metrics')->find($id));
+        }
     }
 }

@@ -12,4 +12,8 @@ class Project extends Model
         'name',
         'description'
     ];
+    public function metrics()
+    {
+       return $this->hasMany(Metric::class);
+    }
 }
