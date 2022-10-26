@@ -28,6 +28,7 @@ Route::get('/metrics/{id}', [MetricController::class,'show']);
 Route::get('/projects/search/{name}', [ProjectController::class,'search']);
 Route::get('/projectswith/metrics/', [ProjectController::class,'withmetrics']);
 Route::get('/projectswith/metrics/{id}', [ProjectController::class,'withmetrics']);
+Route::get('/project/metricvalues/{id}', [ProjectController::class,'metric_values']);
 Route::post('/register', [AuthController::class,'register']);
 Route::post('/login', [AuthController::class,'login']);
 Route::get('/areas/{id}/users', [AreaController::class,'users_by_area']);

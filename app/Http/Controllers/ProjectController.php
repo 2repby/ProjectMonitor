@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Metric_value;
 use App\Models\Period;
 use Illuminate\Http\Request;
 use App\Models\Project;
@@ -107,5 +108,9 @@ class ProjectController extends Controller
         {
             return response(Project::with('metrics')->find($id));
         }
+    }
+    public function metric_values($id){
+        $project = Project::find($id);
+        return response(Project::with(['metrics.metric_values.area' => function($q) {$q->where('metric_values.area_id', 1);}])->find($id));
     }
 }

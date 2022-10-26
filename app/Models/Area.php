@@ -12,4 +12,15 @@ class Area extends Model
     {
         return $this->belongsToMany(User::class,'area_users');
     }
+
+    public function metric_values()
+    {
+        return $this->hasMany(Metric_value::class);
+    }
+    public function periods(){
+        return $this->belongsToMany(Period::class,'metric_values');
+    }
+    public function metrics(){
+        return $this->belongsToMany(Metric::class,'metric_values');
+    }
 }

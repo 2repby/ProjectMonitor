@@ -14,4 +14,13 @@ class Metric_value extends Model
         'period_id',
         'value',
     ];
+    public function metric(){
+        return $this->belongsTo(Metric::class);
+    }
+    public function area(){
+        return $this->belongsTo(Area::class);
+    }
+    public function period(){
+        return $this->belongsTo(Period::class);
+    }
 }
