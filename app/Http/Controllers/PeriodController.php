@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Area;
+use App\Models\Period;
 use Illuminate\Http\Request;
 
-class AreaController extends Controller
+class PeriodController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class AreaController extends Controller
      */
     public function index()
     {
-        return response(Area::all());
+        return response(Period::all());
     }
 
     /**
@@ -60,18 +60,5 @@ class AreaController extends Controller
     public function destroy($id)
     {
         //
-    }
-    /**
-     * Display a list of users by area.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function users_by_area($id)
-    {
-        if (!Area::find($id))
-        {
-            return response([]);
-        }
-        return Area::find($id)->users()->get();
     }
 }

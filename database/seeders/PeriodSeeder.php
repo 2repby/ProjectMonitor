@@ -74,5 +74,28 @@ class PeriodSeeder extends Seeder
             'start_at' => '2022-12-01 00:00:00',
             'end_at' => '2022-12-31 23:59:59',
         ]);
+
+        DB::table('periods')->insert([
+            'name' => 'I квартал 2022',
+            'start_at' => '2022-01-01 00:00:00',
+            'end_at' => '2022-03-31 23:59:59',
+        ]);
+        DB::table('periods')->insert([
+            'name' => 'II квартал 2022',
+            'start_at' => '2022-04-01 00:00:00',
+            'end_at' => '2022-06-30 23:59:59',
+        ]);
+        DB::table('periods')->insert([
+            'name' => 'III квартал 2022',
+            'start_at' => '2022-07-01 00:00:00',
+            'end_at' => '2022-09-30 23:59:59',
+        ]);
+        DB::table('periods')->insert([
+            'name' => 'IV квартал 2022',
+            'start_at' => '2022-10-01 00:00:00',
+            'end_at' => '2022-12-31 23:59:59',
+        ]);
+
+
     }
 }

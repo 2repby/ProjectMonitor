@@ -45,6 +45,28 @@ class MetricValueSeeder extends Seeder
                     ]);
                 }
             }
+
+            for ($m = 24; $m <= 29; $m++) {
+                for ($p = 13; $p <= 16; $p++) {
+                    DB::table('metric_values')->insert([
+                        'area_id' => $a,
+                        'metric_id' => $m,
+                        'period_id' => $p,
+                        'value' => $this->gauss(0,1),
+                    ]);
+                }
+            }
+
+            for ($m = 30; $m <= 45; $m++) {
+                for ($p = 13; $p <= 16; $p++) {
+                    DB::table('metric_values')->insert([
+                        'area_id' => $a,
+                        'metric_id' => $m,
+                        'period_id' => $p,
+                        'value' => $this->gauss(0,1),
+                    ]);
+                }
+            }
         }
 
     }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MetricValuesController;
+use App\Http\Controllers\PeriodController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -23,6 +24,8 @@ use App\Http\Controllers\AreaController;
 // Public routes
 Route::get('/projects', [ProjectController::class, 'index']);
 Route::get('/metrics', [MetricController::class, 'index']);
+Route::get('/periods', [PeriodController::class, 'index']);
+Route::get('/areas', [AreaController::class, 'index']);
 Route::get('/projects/{id}', [ProjectController::class,'show']);
 Route::get('/metrics/{id}', [MetricController::class,'show']);
 Route::get('/projects/search/{name}', [ProjectController::class,'search']);

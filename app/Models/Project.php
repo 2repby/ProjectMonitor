@@ -19,4 +19,5 @@ class Project extends Model
     public function metric_values(){
         return $this->hasManyThrough(Metric_value::class,Metric::class, );
     }
+
 }
