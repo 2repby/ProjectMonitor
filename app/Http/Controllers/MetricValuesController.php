@@ -45,6 +45,14 @@ class MetricValuesController extends Controller
             ];
             return response($response,403);
         }
+//        $metric_value = Metric_value::find(1);
+        $metric_value = Metric_value::where('area_id', $request->area_id)
+            ->where('metric_id', $request->metric_id)
+            ->where('period_id', $request->period_id)->first();
+//       return response($metric_value);
+        if ($metric_value){
+            Metric_value::destroy($metric_value->id);
+        }
         return Metric_value::create($request->all());
     }
 

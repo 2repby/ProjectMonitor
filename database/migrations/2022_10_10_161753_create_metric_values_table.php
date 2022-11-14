@@ -23,6 +23,7 @@ class CreateMetricValuesTable extends Migration
             $table->unsignedBigInteger('period_id');
             $table->foreign('period_id')->references('id')->on('periods');
             $table->float('value');
+            $table->unique(['area_id', 'metric_id', 'period_id']);
         });
     }
 

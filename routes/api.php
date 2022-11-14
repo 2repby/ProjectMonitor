@@ -32,7 +32,7 @@ Route::get('/projects/search/{name}', [ProjectController::class,'search']);
 Route::get('/projectswith/metrics/', [ProjectController::class,'withmetrics']);
 Route::get('/projectswith/metrics/{id}', [ProjectController::class,'withmetrics']);
 Route::get('/project/metricvalues/{id}', [ProjectController::class,'metric_values']);
-Route::post('/register', [AuthController::class,'register']);
+
 Route::post('/login', [AuthController::class,'login']);
 Route::get('/areas/{id}/users', [AreaController::class,'users_by_area']);
 Route::get('/users/{id}/areas', [UserController::class,'areas_by_user']);
@@ -42,12 +42,19 @@ Route::get('/users/{id_user}/deletearea/{id_area}', [UserController::class,'dele
 
 // temp routes удалить
 Route::get('/test', function (){
-    return(phpinfo());
+    $var = 999;
+//    echo '$var';
+    echo $var;
+    echo("$var");
+    print($var);
+
+
 });
 
 
 //Protected routes
 Route::group(['middleware' => ['auth:sanctum']],  function (){
+    Route::post('/register', [AuthController::class,'register']);
     Route::post('/projects', [ProjectController::class,'store']);
     Route::post('/metrics', [MetricController::class,'store']);
     Route::put('/projects/{id}', [ProjectController::class,'update']);
@@ -55,6 +62,7 @@ Route::group(['middleware' => ['auth:sanctum']],  function (){
     Route::delete('/projects/{id}', [ProjectController::class,'destroy']);
     Route::delete('/metrics/{id}', [MetricController::class,'destroy']);
     Route::get('/logout', [AuthController::class, 'logout']);
+    Route::get('/users', [UserController::class, 'index']);
     Route::get('/user', function (Request $request) {
         return $request->user();
     });

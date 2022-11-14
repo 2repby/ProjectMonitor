@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             PeriodSeeder::class,
             MetricSeeder::class,
             MetricValueSeeder::class,
+            AreaUsersSeeder::class,
         ]);
     }
 }

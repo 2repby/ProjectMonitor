@@ -100,7 +100,7 @@ class ProjectController extends Controller
      * @param
      * @return \Illuminate\Http\Response
      */
-    public function withmetrics($id=null)
+    public function     withmetrics($id=null)
     {
         if (is_null($id))
             return response(Project::with('metrics')->get());
