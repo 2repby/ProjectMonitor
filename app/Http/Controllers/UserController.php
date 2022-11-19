@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Project;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class UserController extends Controller
 {
@@ -25,7 +27,30 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $fields = $request->validate([
+            'lastname' => 'required|string',
+            'firstname' => 'required|string',
+            'surname' => 'string',
+            'email' => 'required|string|unique:users,email',
+            'password' => 'required|string',
+            'phone' => 'required|string',
+        ]);
+        $user = User::create([
+            'lastname' => $fields['lastname'],
+            'firstname' => $fields['firstname'],
+            'surname' => $fields['surname'],
+            'email' => $fields['email'],
+            'password' => bcrypt($fields['password']),
+            'phone' => $fields['phone'],
+        ]);
+
+        $token = $user->createToken('myapptoken')->plainTextToken;
+
+        $response = [
+            'user' => $user,
+            'token' => $token
+        ];
+        return response($response,201);
     }
 
     /**
@@ -59,7 +84,17 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if (! Gate::allows('delete-user')) {
+            $response = [
+                'message' => 'User not authorised to perform the action',
+            ];
+            return response($response,403);
+        }
+//        $user = User::find($id);
+//        $id_areas = $user->areas();
+//        $user->areas()->detouch();
+//        var_dump($id_areas[0]);
+        return response(User::destroy($id));
     }
 
     /**
@@ -101,6 +136,28 @@ class UserController extends Controller
             return response([]);
         }
         return $user->delete_area($id_area);
+    }
+
+    public function add_areas($id_user, Request $request)
+    {
+        $user = User::find($id_user);
+        if (!$user)
+        {
+            return response([]);
+        }
+        $id_areas = explode(',',$request->post('id_areas'));
+        return $user->add_areas($id_areas);
+    }
+
+    public function delete_areas($id_user, Request $request)
+    {
+        $user = User::find($id_user);
+        if (!$user)
+        {
+            return response([]);
+        }
+        $id_areas = explode(',',$request->post('id_areas'));
+        return $user->delete_areas($id_areas);
     }
 
 }

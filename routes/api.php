@@ -36,8 +36,7 @@ Route::get('/project/metricvalues/{id}', [ProjectController::class,'metric_value
 Route::post('/login', [AuthController::class,'login']);
 Route::get('/areas/{id}/users', [AreaController::class,'users_by_area']);
 Route::get('/users/{id}/areas', [UserController::class,'areas_by_user']);
-Route::get('/users/{id_user}/addarea/{id_area}', [UserController::class,'add_area']);
-Route::get('/users/{id_user}/deletearea/{id_area}', [UserController::class,'delete_area']);
+
 
 
 // temp routes удалить
@@ -54,7 +53,7 @@ Route::get('/test', function (){
 
 //Protected routes
 Route::group(['middleware' => ['auth:sanctum']],  function (){
-    Route::post('/register', [AuthController::class,'register']);
+    Route::post('/user', [UserController::class,'store']);
     Route::post('/projects', [ProjectController::class,'store']);
     Route::post('/metrics', [MetricController::class,'store']);
     Route::put('/projects/{id}', [ProjectController::class,'update']);
@@ -66,6 +65,11 @@ Route::group(['middleware' => ['auth:sanctum']],  function (){
     Route::get('/user', function (Request $request) {
         return $request->user();
     });
+    Route::delete('/user/{id}', [UserController::class,'destroy']);
     Route::post('/metricvalues', [MetricValuesController::class,'store']);
+    Route::get('/users/{id_user}/addarea/{id_area}', [UserController::class,'add_area']);
+    Route::get('/users/{id_user}/deletearea/{id_area}', [UserController::class,'delete_area']);
+    Route::post('/user/{id_user}/addareas', [UserController::class,'add_areas']);
+    Route::post('/user/{id_user}/deleteareas', [UserController::class,'delete_areas']);
 });
 
