@@ -29,5 +29,3 @@ deploy:
     - chmod 644 ~/.ssh/known_hosts
     - ssh-add  <(echo "$SSH_PRIVATE_KEY" | base64 -d)
     - ssh osipov@monitoring.surgut.digital "docker system prune -f && docker login $CI_REGISTRY -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD && docker service update --with-registry-auth --image $CI_REGISTRY_IMAGE:$CI_PIPELINE_IID surgu_project_monitor"
-  tags:
-    - student_surgu
