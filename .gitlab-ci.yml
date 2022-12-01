@@ -3,7 +3,7 @@ services:
   - docker:19.03.12-dind
 stages:
   - Build
-
+  - Deploy
 backend:
   retry: 2
   stage: Build
