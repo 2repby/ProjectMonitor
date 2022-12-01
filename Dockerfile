@@ -14,11 +14,13 @@ RUN apt-get install -y \
         zip \
   && docker-php-ext-install zip
 
+RUN apt-get install -y libpq-dev
+
 RUN apt-get install -y supervisor
 RUN pecl install redis
 RUN docker-php-ext-enable redis
 RUN docker-php-ext-install sockets
-RUN docker-php-ext-install xsl mysqli pdo pdo_mysql
+RUN docker-php-ext-install xsl mysqli pdo pdo_pgsql pgsql
 RUN docker-php-ext-install opcache
 RUN docker-php-ext-install pcntl
 RUN docker-php-ext-install bcmath
