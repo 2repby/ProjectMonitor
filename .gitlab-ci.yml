@@ -22,6 +22,8 @@ deploy:
     - mkdir -p ~/.ssh
     - eval $(ssh-agent -s)
     - chmod 700 ~/.ssh
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "main"'
   script:
     - pwd
     - ls -a
