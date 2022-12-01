@@ -64,10 +64,13 @@ class User extends Authenticatable
         return $this->areas()->get();
     }
 
-    public function add_areas($id_areas)
+    public function add_areas($id_areas = null)
     {
-        foreach ($id_areas as $id) {
-            $this->areas()->attach($id);
+        $this->areas()->detach();
+        if ($id_areas) {
+            foreach ($id_areas as $id) {
+                $this->areas()->attach($id);
+            }
         }
         return $this->areas()->get();
     }

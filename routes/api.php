@@ -54,6 +54,7 @@ Route::get('/test', function (){
 //Protected routes
 Route::group(['middleware' => ['auth:sanctum']],  function (){
     Route::post('/user', [UserController::class,'store']);
+    Route::post('/user/{id}', [UserController::class,'update']);
     Route::post('/projects', [ProjectController::class,'store']);
     Route::post('/metrics', [MetricController::class,'store']);
     Route::put('/projects/{id}', [ProjectController::class,'update']);

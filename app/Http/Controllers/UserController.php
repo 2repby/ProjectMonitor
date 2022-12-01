@@ -73,8 +73,54 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if (! Gate::allows('update-user')) {
+            $response = [
+                'message' => 'User not authorised to perform the action',
+            ];
+            return response($response, 403);
+        }
+
+        $user = User::find($id);
+        if (!$user)
+        {
+            $response = [
+                'message' => 'User not found',
+            ];
+            return response($response,403);
+        }
+        $fields = $request->validate([
+            'lastname' => 'string',
+            'firstname' => 'string',
+            'surname' => 'string',
+            'phone' => 'string',
+//            'email' => 'string|unique:users,email',
+//            'password' => 'string',
+        ]);
+        $user->lastname = $fields['lastname'];
+        $user->firstname = $fields['firstname'];
+        $user->surname = $fields['surname'];
+        $user->phone = $fields['phone'];
+        if ($request->post('password')){
+            array_push($fields, $request->validate(['password' => 'string']));
+            $user->password = $request->post('password');
+        }
+        if ($request->post('email') != $user->email){
+            array_push($fields, $request->validate(['email' => 'string|unique:users,email']));
+            $user->email = $request->post('email');
+        }
+        $user->save();
+//        $user->update($request->all([
+//            'lastname' => $fields['lastname'],
+//            'firstname' => $fields['firstname'],
+//            'surname' => $fields['surname'],
+////            'email' => $fields['email'],
+//            'password' => bcrypt($fields['password']),
+//            'phone' => $fields['phone'],
+//        ]));
+
+        return response(['user' => $user]);
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -145,8 +191,11 @@ class UserController extends Controller
         {
             return response([]);
         }
-        $id_areas = explode(',',$request->post('id_areas'));
-        return $user->add_areas($id_areas);
+        if ($request->post('id_areas') != '') {
+            $id_areas = explode(',', $request->post('id_areas'));
+            return $user->add_areas($id_areas);
+        }
+        else return $user->add_areas();
     }
 
     public function delete_areas($id_user, Request $request)
