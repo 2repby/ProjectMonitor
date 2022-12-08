@@ -73,7 +73,7 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if (! Gate::allows('update-user')) {
+        if (! Gate::allows('update-user', $id)) {
             $response = [
                 'message' => 'User not authorised to perform the action',
             ];
