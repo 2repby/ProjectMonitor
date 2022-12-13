@@ -102,7 +102,7 @@ class UserController extends Controller
         $user->phone = $fields['phone'];
         if ($request->post('password')){
             array_push($fields, $request->validate(['password' => 'string']));
-            $user->password = $request->post('password');
+            $user->password = bcrypt($request->post('password'));
         }
         if ($request->post('email') != $user->email){
             array_push($fields, $request->validate(['email' => 'string|unique:users,email']));
