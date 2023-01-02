@@ -20,7 +20,9 @@ class DatabaseSeeder extends Seeder
             ProjectSeeder::class,
             AreaSeeder::class,
             PeriodSeeder::class,
+            MetricGroupSeeder::class,
             MetricSeeder::class,
+            MetricsPeriodsSeeder::class,
             MetricValueSeeder::class,
             AreaUsersSeeder::class,
         ]);
