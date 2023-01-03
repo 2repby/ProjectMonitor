@@ -302,6 +302,141 @@ class MetricValueSeeder extends Seeder
             'value' => 7,
         ]);
 
+        /* Кондинский район */
+        DB::table('metric_values')->insert([
+            'area_id' => 3,
+            'metric_id' => 1,
+            'period_id' => 1,
+            'value' => 15,
+        ]);
+        DB::table('metric_values')->insert([
+            'area_id' => 3,
+            'metric_id' => 2,
+            'period_id' => 1,
+            'value' => 1387,
+        ]);
+        DB::table('metric_values')->insert([
+            'area_id' => 3,
+            'metric_id' => 3,
+            'period_id' => 1,
+            'value' => 1159,
+        ]);
+        DB::table('metric_values')->insert([
+            'area_id' => 3,
+            'metric_id' => 4,
+            'period_id' => 1,
+            'value' => 2546,
+        ]);
+        DB::table('metric_values')->insert([
+            'area_id' => 3,
+            'metric_id' => 6,
+            'period_id' => 1,
+            'value' => 161,
+        ]);
+        DB::table('metric_values')->insert([
+            'area_id' => 3,
+            'metric_id' => 7,
+            'period_id' => 1,
+            'value' => 16,
+        ]);
+        DB::table('metric_values')->insert([
+            'area_id' => 3,
+            'metric_id' => 8,
+            'period_id' => 1,
+            'value' => 72,
+        ]);
+        DB::table('metric_values')->insert([
+            'area_id' => 3,
+            'metric_id' => 9,
+            'period_id' => 1,
+            'value' => 110,
+        ]);
+        DB::table('metric_values')->insert([
+            'area_id' => 3,
+            'metric_id' => 23,
+            'period_id' => 1,
+            'value' => 14,
+        ]);
+        DB::table('metric_values')->insert([
+            'area_id' => 3,
+            'metric_id' => 24,
+            'period_id' => 1,
+            'value' => 1069,
+        ]);
+        DB::table('metric_values')->insert([
+            'area_id' => 3,
+            'metric_id' => 25,
+            'period_id' => 1,
+            'value' => 450,
+        ]);
+        DB::table('metric_values')->insert([
+            'area_id' => 3,
+            'metric_id' => 26,
+            'period_id' => 1,
+            'value' => 420,
+        ]);
+        DB::table('metric_values')->insert([
+            'area_id' => 3,
+            'metric_id' => 28,
+            'period_id' => 1,
+            'value' => 45,
+        ]);
+        DB::table('metric_values')->insert([
+            'area_id' => 3,
+            'metric_id' => 29,
+            'period_id' => 1,
+            'value' => 0,
+        ]);
+        DB::table('metric_values')->insert([
+            'area_id' => 3,
+            'metric_id' => 32,
+            'period_id' => 1,
+            'value' => 57,
+        ]);
+        DB::table('metric_values')->insert([
+            'area_id' => 3,
+            'metric_id' => 34,
+            'period_id' => 1,
+            'value' => 432,
+        ]);
+        DB::table('metric_values')->insert([
+            'area_id' => 3,
+            'metric_id' => 35,
+            'period_id' => 1,
+            'value' => 1159,
+        ]);
+        DB::table('metric_values')->insert([
+            'area_id' => 3,
+            'metric_id' => 37,
+            'period_id' => 1,
+            'value' => 103,
+        ]);
+        DB::table('metric_values')->insert([
+            'area_id' => 3,
+            'metric_id' => 41,
+            'period_id' => 1,
+            'value' => 1,
+        ]);
+        DB::table('metric_values')->insert([
+            'area_id' => 3,
+            'metric_id' => 50,
+            'period_id' => 1,
+            'value' => 1387,
+        ]);
+        DB::table('metric_values')->insert([
+            'area_id' => 3,
+            'metric_id' => 51,
+            'period_id' => 1,
+            'value' => 1159,
+        ]);
+        DB::table('metric_values')->insert([
+            'area_id' => 3,
+            'metric_id' => 54,
+            'period_id' => 1,
+            'value' => 1,
+        ]);
+
+
         for ($a=1; $a <= 22; $a++) {
             for ($m = 56; $m <= 77; $m++) {
                 for ($p = 4; $p <= 7; $p++) {
