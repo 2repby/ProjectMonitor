@@ -202,7 +202,7 @@ class MetricSeeder extends Seeder
         DB::table('metrics')->insert([
             'code' => '19(н)',
             'shortname' => '',
-            'name' => 'Общая численность выпускников 9-х классов МО',
+            'name' => 'Общая численность выпускников 9-х классов МО, поступивших в колледжи',
             'description' => '',
             'is_norma' => 1,
             'metric_group_id' => 11,
@@ -471,7 +471,7 @@ class MetricSeeder extends Seeder
             'input_description' => 'Количество общеобразовательных организаций муниципального образования, имеющих договоры о совместной деятельности с профессиональными образовательными организациями, организациями высшего образования по реализации мероприятий единого муниципального концептуального документа по ранней профориентации',
             'metric_group_id' => 8,
             'project_id' => 1,
-            'norma_metric_id' => 13,
+            'norma_metric_id' => 1,
         ]);
         DB::table('metrics')->insert([
             'code' => '8.2',
@@ -491,7 +491,7 @@ class MetricSeeder extends Seeder
             'input_description' => 'Количество обучающихся 5-9 классов, ознакомившихся с представленными компетенциями на площадках чемпионатов WorldSkills и JuniorSkills',
             'metric_group_id' => 8,
             'project_id' => 1,
-            'norma_metric_id' => 18,
+            'norma_metric_id' => 17,
         ]);
         DB::table('metrics')->insert([
             'code' => '9.1',

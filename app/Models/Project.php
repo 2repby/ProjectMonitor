@@ -14,10 +14,18 @@ class Project extends Model
     ];
     public function metrics()
     {
-       return $this->hasMany(Metric::class);
+        return $this->hasMany(Metric::class);
     }
-    public function metric_values(){
-        return $this->hasManyThrough(Metric_value::class,Metric::class, );
+    public function periods()
+    {
+        return $this->hasMany(Period::class);
     }
+//    public function metric_values(){
+//        return $this->hasManyThrough(Metric_value::class,Period::class, );
+//    }
+    // Так работало:
+//    public function metric_values(){
+//        return $this->hasManyThrough(Metric_value::class,Metric::class, );
+//    }
 
 }

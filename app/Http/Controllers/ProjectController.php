@@ -100,19 +100,20 @@ class ProjectController extends Controller
      * @param
      * @return \Illuminate\Http\Response
      */
-    public function     withmetrics($id=null)
+    public function withmetrics($id=null)
     {
         if (is_null($id))
             return response(Project::with('metrics')->get());
         else
         {
-            return response(Project::with('metrics')->find($id));
+                                return response(Project::with('metrics')->find($id));
         }
     }
     public function metric_values($id){
-        $project = Project::find($id);
+//        $project = Project::find($id);
 //        return response(Project::with(['metrics.metric_values' => function($q) {$q->where('area_id', 1);}, 'metrics.metric_values.area'])->find($id));
         return response(Project::with(['metrics.metric_values.area'])->find($id));
+
 
     }
 }

@@ -27,11 +27,12 @@ Route::get('/metrics', [MetricController::class, 'index']);
 Route::get('/periods', [PeriodController::class, 'index']);
 Route::get('/areas', [AreaController::class, 'index']);
 Route::get('/projects/{id}', [ProjectController::class,'show']);
-Route::get('/metrics/{id}', [MetricController::class,'show']);
+Route::get('/metrics/{id}', [MetricController::class,'metricsByProject']);
 Route::get('/projects/search/{name}', [ProjectController::class,'search']);
 Route::get('/projectswith/metrics/', [ProjectController::class,'withmetrics']);
 Route::get('/projectswith/metrics/{id}', [ProjectController::class,'withmetrics']);
 Route::get('/project/metricvalues/{id}', [ProjectController::class,'metric_values']);
+Route::get('/metricvalues/{id}', [MetricValuesController::class,'metricValuesByProject']);
 
 Route::post('/login', [AuthController::class,'login']);
 Route::get('/areas/{id}/users', [AreaController::class,'users_by_area']);
@@ -63,6 +64,7 @@ Route::group(['middleware' => ['auth:sanctum']],  function (){
     Route::delete('/metrics/{id}', [MetricController::class,'destroy']);
     Route::get('/logout', [AuthController::class, 'logout']);
     Route::get('/users', [UserController::class, 'index']);
+
     Route::get('/user', function (Request $request) {
         return $request->user();
     });

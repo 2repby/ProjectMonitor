@@ -25,9 +25,10 @@ class MetricController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function index()
+    public function metricsByProject($id)
     {
-        return response(Metric::all());
+//        return response(Metric::all());
+        return response(Metric::with('norma','periods')->where('project_id',$id)->get());
     }
 
     /**
@@ -108,7 +109,7 @@ class MetricController extends Controller
 
     }
     public function get_project($id){
-        return response(Metric::class->find($id)->project());
+        return response(Metric::find($id)->project());
     }
 
 

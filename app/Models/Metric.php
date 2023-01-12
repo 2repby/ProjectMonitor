@@ -13,7 +13,8 @@ class Metric extends Model
         'name',
         'shortname',
         'description',
-        'project_id'
+        'project_id',
+        'norma_metric_id',
 
     ];
     public function project(){
@@ -27,9 +28,15 @@ class Metric extends Model
         return $this->belongsToMany(Area::class,'metric_values');
     }
     public function periods(){
-        return $this->belongsToMany(Period::class,'metric_values');
+        return $this->belongsToMany(Period::class,'metrics_periods');
     }
-
-
+    // Циклическая связь
+    public function metrics()
+    {
+        return $this->hasMany(Metric::class, 'norma_metric_id', 'id');
+    }
+    public function norma(){
+        return $this->belongsTo(Metric::class, 'norma_metric_id', 'id');
+    }
 
 }

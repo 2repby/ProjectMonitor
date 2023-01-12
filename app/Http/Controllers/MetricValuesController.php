@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Area;
+use App\Models\Metric;
 use App\Models\Metric_value;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 
@@ -15,10 +17,40 @@ class MetricValuesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    //Не используется пока
+    public function metricValuesByProject($id)
     {
-        //
+        $res = [];
+        $metrics = DB::table('metrics')->where('project_id', $id)->get();
+        foreach ($metrics as $metric)
+        {
+            $m = [];
+            $metric_values = DB::table('metric_values')->where('metric_id', $metric->id)->get();
+            foreach ($metric_values as $metric_value)
+            {
+
+                $area = DB::table('areas')->where('id', $metric_value->area_id)->first();
+                $metric_value->area = $area;
+                $norma = DB::table('metric_values')
+                    ->where('metric_id', $metric->norma_metric_id)
+                    ->where('area_id', $metric_value->area_id)
+                    ->where('period_id', $metric_value->period_id)
+                    ->first();
+                if (!is_null($norma)){
+                    $metric_value->norma_value = $norma->value;
+                }
+                array_push($m, $metric_value);
+            }
+            $metric->metric_values = $m;
+            array_push($res, $metric);
+
+        }
+
+        return response($res);
+
+        //return response(Metric::with(['metric_values.area', 'norma'])->where('project_id', $id)->get());
     }
+
 
     /**
      * Store a newly created resource in storage.
