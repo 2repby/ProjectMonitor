@@ -19,6 +19,8 @@ class CreatePeriodsTable extends Migration
             $table->string('name');
             $table->dateTime('start_at')->nullable();
             $table->dateTime('end_at')->nullable();
+            $table->dateTime('deadline1')->nullable();
+            $table->dateTime('deadline2')->nullable();
             $table->unsignedBigInteger('project_id');
             $table->foreign('project_id')->references('id')->on('projects');
         });
