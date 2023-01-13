@@ -103,10 +103,10 @@ class ProjectController extends Controller
     public function withmetrics($id=null)
     {
         if (is_null($id))
-            return response(Project::with('metrics')->get());
+            return response(Project::with('metrics', 'periods')->get());
         else
         {
-                                return response(Project::with('metrics')->find($id));
+                                return response(Project::with('metrics', 'periods')->find($id));
         }
     }
     public function metric_values($id){
