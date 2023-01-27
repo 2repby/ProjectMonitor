@@ -122,4 +122,34 @@ class MetricValuesController extends Controller
         //
     }
 
+    /**
+     * Calcalate ant store ALL normalized values.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function calcNormalized($id)
+    {
+        $res = [];
+        $metric_values = DB::table('metric_values')->join('periods','metric_values.period_id', '=', 'periods.id')
+            ->where('periods.project_id', $id)->get();
+//        return response($metric_values);
+        foreach ($metric_values as $metric_value)
+        {
+            $norma_metric_value = DB::table('metric_values AS mv1')
+                ->join('metrics AS m1', 'mv1.metric_id','=', 'm1.id')
+                ->join('metrics AS m2','m1.norma_metric_id','=', 'm2.id')
+                ->join('metric_values', 'metric_values.metric_id','=','m2.id')
+                ->get();
+            return response($norma_metric_value);
+            if (!is_null($norma_metric_value))
+            {
+                $metric_value_with_norma = $metric_value;
+                $metric_value_with_norma->norma_metric_value = $norma_metric_value->value;
+                $metric_value_with_norma->normalized_value = $metric_value->value / $norma_metric_value->value;
+                array_push($res, $metric_value);
+            }
+        }
+        return response($res);
+    }
 }

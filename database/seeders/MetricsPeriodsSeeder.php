@@ -15,12 +15,39 @@ class MetricsPeriodsSeeder extends Seeder
     public function run()
     {
         /* Нормирующие значения для периода 1 */
-        for ($m = 1; $m <= 9; $m++) {
-            DB::table('metrics_periods')->insert([
-                'metric_id' => $m,
-                'period_id' => 1,
-           ]);
-        }
+
+        DB::table('metrics_periods')->insert([
+            'metric_id' => 1,
+            'period_id' => 1,
+        ]);
+        DB::table('metrics_periods')->insert([
+            'metric_id' => 2,
+            'period_id' => 1,
+        ]);
+        DB::table('metrics_periods')->insert([
+            'metric_id' => 3,
+            'period_id' => 1,
+        ]);
+        DB::table('metrics_periods')->insert([
+            'metric_id' => 4,
+            'period_id' => 1,
+        ]);
+        DB::table('metrics_periods')->insert([
+            'metric_id' => 6,
+            'period_id' => 1,
+        ]);
+        DB::table('metrics_periods')->insert([
+            'metric_id' => 7,
+            'period_id' => 1,
+        ]);
+        DB::table('metrics_periods')->insert([
+            'metric_id' => 8,
+            'period_id' => 1,
+        ]);
+        DB::table('metrics_periods')->insert([
+            'metric_id' => 9,
+            'period_id' => 1,
+        ]);
 
         /* метрики для периода 1 */
         DB::table('metrics_periods')->insert([
@@ -95,12 +122,39 @@ class MetricsPeriodsSeeder extends Seeder
         ]);
 
         /* Нормирующие значения для периода 2 */
-        for ($m = 1; $m <= 13; $m++) {
-            DB::table('metrics_periods')->insert([
-                'metric_id' => $m,
-                'period_id' => 2,
-            ]);
-        }
+        DB::table('metrics_periods')->insert([
+            'metric_id' => 1,
+            'period_id' => 2,
+        ]);
+        DB::table('metrics_periods')->insert([
+            'metric_id' => 2,
+            'period_id' => 2,
+        ]);
+        DB::table('metrics_periods')->insert([
+            'metric_id' => 3,
+            'period_id' => 2,
+        ]);
+        DB::table('metrics_periods')->insert([
+            'metric_id' => 4,
+            'period_id' => 2,
+        ]);
+        DB::table('metrics_periods')->insert([
+            'metric_id' => 6,
+            'period_id' => 2,
+        ]);
+        DB::table('metrics_periods')->insert([
+            'metric_id' => 7,
+            'period_id' => 2,
+        ]);
+        DB::table('metrics_periods')->insert([
+            'metric_id' => 8,
+            'period_id' => 2,
+        ]);
+        DB::table('metrics_periods')->insert([
+            'metric_id' => 9,
+            'period_id' => 2,
+        ]);
+
         DB::table('metrics_periods')->insert([
             'metric_id' => 19,
             'period_id' => 2,

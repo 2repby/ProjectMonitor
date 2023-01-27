@@ -33,10 +33,12 @@ Route::get('/projectswith/metrics/', [ProjectController::class,'withmetrics']);
 Route::get('/projectswith/metrics/{id}', [ProjectController::class,'withmetrics']);
 Route::get('/project/metricvalues/{id}', [ProjectController::class,'metric_values']);
 Route::get('/metricvalues/{id}', [MetricValuesController::class,'metricValuesByProject']);
+Route::get('/metricvalues/calcnormalized/{id}', [MetricValuesController::class,'calcNormalized']);
 
 Route::post('/login', [AuthController::class,'login']);
 Route::get('/areas/{id}/users', [AreaController::class,'users_by_area']);
 Route::get('/users/{id}/areas', [UserController::class,'areas_by_user']);
+
 
 
 
